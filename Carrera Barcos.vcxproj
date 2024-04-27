@@ -131,9 +131,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Atk.h" />
+    <ClInclude Include="Barcos.h" />
     <ClInclude Include="Carrera.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Atk.cpp" />
+    <ClCompile Include="Barcos.cpp" />
     <ClCompile Include="Carrera.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,4 +1,7 @@
 #include "Carrera.h"
+#include "Atk.h"
+#include "Barcos.h"
+
 #include <cstdlib>
 #include <ctime>
 #include <iostream>

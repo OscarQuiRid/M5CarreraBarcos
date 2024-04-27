@@ -1,26 +1,31 @@
 #include "Carrera.h"
 #include <iostream>
-#include <vector>
 
 using namespace std;
 //ordenar ctr+k >> ctr+d/f
 //comentar ctr+k >> ctr+c/u
 
-Carrera::Carrera() {
-	velocidad = 0;
-	distancia = 0;
-	nitro = false;
-	apodo = "";
-	dado = 0;
-	puntos = 0;
-	turno = 0;
+string Carrera::getApodo() {
+	return apodo;
 }
-Carrera::Carrera(int pVelocidad, int pDist, bool pNitro, string pApodo, int pPuntos, int pTurno) {
-	velocidad = pVelocidad;
-	distancia = pDist;
-	nitro = pNitro;
+int Carrera::getPuntos() {
+	return puntos;
+}
+int Carrera::getTurno() {
+	return turno;
+}
+int Carrera::getDado() {
+	return dado;
+}
+void Carrera::setApodo(string pApodo) {
 	apodo = pApodo;
+}
+void Carrera::setPuntos(int pPuntos) {
 	puntos = pPuntos;
+}
+void Carrera::setTurno(int pTurno) {
 	turno = pTurno;
-
+}
+void Carrera::setDado(int pDado) {
+	dado = pDado;
 }
