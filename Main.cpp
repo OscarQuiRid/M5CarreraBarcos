@@ -1,7 +1,5 @@
 #include "Barcos.h"
 
-
-
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
@@ -37,8 +35,8 @@ using namespace std;
 //[x] saludar 
 //[x] preguntar nombre
 //[]   bucle del juego
-//[]	 preguntar que categoria quiere competir
-//[]		preguntar que barco quiere seleccionar
+//[-]	 preguntar que categoria quiere competir
+//[-]		preguntar que barco quiere seleccionar
 //[]			iniciar la carrera contra la maquina
 //[]					se lanza el dado para el usuario
 //[]						tirar el dado,sumar dice a la velocidad
@@ -66,35 +64,42 @@ using namespace std;
 //[]						decir a que velocidad vas
 //[]			asi 10 turnos
 //[]	mostrar quien llego mas lejos o llego vivo al final de la carrera
+
+
 int main() {
 	srand(time(NULL));
 
 	Barcos cargador;			// variable para cargar funciones
 	Barcos playerUno;
-	Barcos playerDos;
-	Barcos playerTres;
-
-	////							nombre vel. atk. vida. nombre atk
-	//Barcos barcoSmall1 = Barcos("Kayuco", 5, false, 1, "atkKayuco");
-	//Barcos barcoSmall2 = Barcos("Balsa", 5, false, 1, "atkBalsa");
-	//Barcos barcoSmall3 = Barcos("Gondola", 5, false, 1, "atkGondola");
-	//Barcos barcoMedium1 = Barcos("Narcolancha", 8, false, 1, "atkNarcolancha");
-	//Barcos barcoMedium2 = Barcos("Galera", 8, false, 1, "atkGalera");
-	//Barcos barcoMedium3 = Barcos("Drakkar", 8, false, 1, "atkDrakkar");
-	//Barcos barcoBig1 = Barcos("Buque mercante", 10, false, 1, "atkBuqueMercante");
-	//Barcos barcoBig2 = Barcos("Cruzero de lujo", 10, false, 1, "atkCruzeroDeLujo");
-	//Barcos barcoBig3 = Barcos("Buque de investigacion", 10, false, 1, "atkBuqueDeInvestigacion");
-
 
 	bool juego = true;
 
 	while (juego == true)
 	{
-		cargador.introApodo();
-		cargador.eleccionBarco();
+		cargador.introApodo(playerUno);
+		cargador.eleccionBarco(playerUno);
 
-		
+		string name = cargador.getApodo();
+		cout << name;
+
+		cout << playerUno.getNombreBarco();;
 		juego = false;
 	}
 
 }
+
+
+
+
+
+
+////							nombre vel. atk. vida. nombre atk
+//Barcos barcoSmall1 = Barcos("Kayuco", 5, false, 1, "atkKayuco");
+//Barcos barcoSmall2 = Barcos("Balsa", 5, false, 1, "atkBalsa");
+//Barcos barcoSmall3 = Barcos("Gondola", 5, false, 1, "atkGondola");
+//Barcos barcoMedium1 = Barcos("Narcolancha", 8, false, 1, "atkNarcolancha");
+//Barcos barcoMedium2 = Barcos("Galera", 8, false, 1, "atkGalera");
+//Barcos barcoMedium3 = Barcos("Drakkar", 8, false, 1, "atkDrakkar");
+//Barcos barcoBig1 = Barcos("Buque mercante", 10, false, 1, "atkBuqueMercante");
+//Barcos barcoBig2 = Barcos("Cruzero de lujo", 10, false, 1, "atkCruzeroDeLujo");
+//Barcos barcoBig3 = Barcos("Buque de investigacion", 10, false, 1, "atkBuqueDeInvestigacion");
