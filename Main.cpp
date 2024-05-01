@@ -70,27 +70,30 @@ int main() {
 	srand(time(NULL));
 
 	Barcos cargador;			// variable para cargar funciones
-	//							nombre vel. atk. vida. nombre atk
-	Barcos barcoSmall1 = Barcos("Kayuco", 5, false, 1, "atkKayuco");
-	Barcos barcoSmall2 = Barcos("Balsa", 5, false, 1, "atkBalsa");
-	Barcos barcoSmall3 = Barcos("Gondola", 5, false, 1, "atkGondola");
-	Barcos barcoMedium1 = Barcos("Narcolancha", 8, false, 1, "atkNarcolancha");
-	Barcos barcoMedium2 = Barcos("Galera", 8, false, 1, "atkGalera");
-	Barcos barcoMedium3 = Barcos("Drakkar", 8, false, 1, "atkDrakkar");
-	Barcos barcoBig1 = Barcos("Buque mercante", 10, false, 1, "atkBuqueMercante");
-	Barcos barcoBig2 = Barcos("Cruzero de lujo", 10, false, 1, "atkCruzeroDeLujo");
-	Barcos barcoBig3 = Barcos("Buque de investigacion", 10, false, 1, "atkBuqueDeInvestigacion");
+	Barcos playerUno;
+	Barcos playerDos;
+	Barcos playerTres;
+
+	////							nombre vel. atk. vida. nombre atk
+	//Barcos barcoSmall1 = Barcos("Kayuco", 5, false, 1, "atkKayuco");
+	//Barcos barcoSmall2 = Barcos("Balsa", 5, false, 1, "atkBalsa");
+	//Barcos barcoSmall3 = Barcos("Gondola", 5, false, 1, "atkGondola");
+	//Barcos barcoMedium1 = Barcos("Narcolancha", 8, false, 1, "atkNarcolancha");
+	//Barcos barcoMedium2 = Barcos("Galera", 8, false, 1, "atkGalera");
+	//Barcos barcoMedium3 = Barcos("Drakkar", 8, false, 1, "atkDrakkar");
+	//Barcos barcoBig1 = Barcos("Buque mercante", 10, false, 1, "atkBuqueMercante");
+	//Barcos barcoBig2 = Barcos("Cruzero de lujo", 10, false, 1, "atkCruzeroDeLujo");
+	//Barcos barcoBig3 = Barcos("Buque de investigacion", 10, false, 1, "atkBuqueDeInvestigacion");
 
 
 	bool juego = true;
 
-
 	while (juego == true)
 	{
-		//cargador.introApodo();
+		cargador.introApodo();
+		cargador.eleccionBarco();
 
-		////////////////////////////////////////////////// arriba codigo debajo pruevas
-		cout << cargador.getApodo();
+		
 		juego = false;
 	}
 

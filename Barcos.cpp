@@ -13,9 +13,6 @@ string Barcos::getApodo() {
 int Barcos::getPuntos() {
 	return puntos;
 }
-int Barcos::getTurnoCarrera() {
-	return turnoCarrera;
-}
 int Barcos::getDado() {
 	return (rand() % 6 + 1);;
 }
@@ -24,9 +21,6 @@ void Barcos::setApodo(string pApodo) {
 }
 void Barcos::setPuntos(int pPuntos) {
 	puntos = pPuntos;
-}
-void Barcos::setTurnoCarrera(int pTurnoCarrera) {
-	turnoCarrera = pTurnoCarrera;
 }
 
 /// ATK
@@ -46,29 +40,24 @@ void Barcos::setDescripcionAtk(string pDescripcionAtk) {
 
 /// BARCOS
 Barcos::Barcos() {
-	nombre = "";
-	tipo = "";
-	velocidad = 0;
+	nombreBarco = "";
+	velocidadBarco = 0;
 	atk = false;
 	vidas = 3;
 }
 Barcos::Barcos(string pnombre, int pvelocidad, bool patk, int pvidas, string pNombreAtk) {
-	nombre = pnombre;
-	velocidad = pvelocidad;
+	nombreBarco = pnombre;
+	velocidadBarco = pvelocidad;
 	atk = patk;
 	vidas = pvidas;
 	nombreAtk = pNombreAtk;
 }
 void Barcos::setNombre(string pNombre) {
-	nombre = pNombre;
-}
-
-void Barcos::setTipo(string pTipo) {
-	tipo = pTipo;
+	nombreBarco = pNombre;
 }
 
 void Barcos::setVelocidad(int pVelocidad) {
-	velocidad = pVelocidad;
+	velocidadBarco = pVelocidad;
 }
 
 void Barcos::setAtk(bool pAtk) {
@@ -80,15 +69,12 @@ void Barcos::setVidas(int pVidas) {
 }
 
 string Barcos::getNombre() {
-	return nombre;
+	return nombreBarco;
 }
 
-string Barcos::getTipo() {
-	return tipo;
-}
 
 int Barcos::getVelocidad() {
-	return velocidad;
+	return velocidadBarco;
 }
 
 bool Barcos::getAtk() {
@@ -97,6 +83,10 @@ bool Barcos::getAtk() {
 
 int Barcos::getVidas() {
 	return vidas;
+}
+// nose si esto es necesario...
+vector<Barcos> Barcos::getPlayerVector() {
+	return player;
 }
 
 void Barcos::introApodo() {
@@ -138,7 +128,16 @@ void Barcos::eleccionBarco() {
 
 						if (eleccion == "s" or eleccion == "S" or eleccion == "si" or eleccion == "SI")
 						{
-							// parametros que voy a necesitar para asignar un barco al personaje y enemigo los cuales crear una clase, crear los get y set etc con las variables apodo,nombreatk,nombre,velocidad,atk,vidas,puntos,turno
+							Barcos playerUno;
+							playerUno.apodo = playerUno.getApodo();
+							playerUno.puntos = 0;
+							playerUno.nombreBarco = "Kayuco";
+							playerUno.velocidadBarco = 2;
+							playerUno.vidas = 1;
+							playerUno.atk = false;
+							playerUno.nombreAtk = "atkKayuco";
+							playerUno.descripcionAtk = "Lanza cadaveres al agua";
+							player.push_back(playerUno);
 
 							barco = false;
 
