@@ -46,7 +46,7 @@ public:
 
 	/// BARCOS
 	Barcos();
-	Barcos(string pNombre, int pVelocidad, bool pAtk, int pVidas);
+	Barcos(string pNombre, int pVelocidad, bool pAtk, int pVidas, string pNombreAtk);
 
 	string getNombre();
 	string getTipo();
@@ -60,5 +60,6 @@ public:
 	void setAtk(bool pAtk);
 	void setVidas(int pVidas);
 
-	void crearBarcos();
+	void introApodo();
+	void eleccionBarco();
 };

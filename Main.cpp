@@ -1,6 +1,6 @@
-#include "Carrera.h"
-#include "Atk.h"
 #include "Barcos.h"
+
+
 
 #include <cstdlib>
 #include <ctime>
@@ -20,6 +20,8 @@ using namespace std;
 //					stats ideal a su tamaño y caracteristicas 
 // crear atakes especiales para los distintos tipos de barco que cada uno tenga su caracteristica en funcion a su historia
 //					que la maquina escoja un barco de manera random dentro de la categoria que escojio el player
+//					los ataques se van a cargar ejemplo: turno 1 1/2, turno dos 1, turno tres pregunta para usar ataque, turno cuatro 1/2, turno cinco 1, turno 6 pregunta para usar ataque
+//					si no usas el ataque no acumulas otro el maximo es 1
 // 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -31,10 +33,10 @@ using namespace std;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // LOGICA DEL JUEGO
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//[] presentacion
-//[] saludar 
-//[] preguntar nombre
-//[]   bucle del juego condicion de salida 10 turnos
+//[x] presentacion
+//[x] saludar 
+//[x] preguntar nombre
+//[]   bucle del juego
 //[]	 preguntar que categoria quiere competir
 //[]		preguntar que barco quiere seleccionar
 //[]			iniciar la carrera contra la maquina
@@ -67,22 +69,29 @@ using namespace std;
 int main() {
 	srand(time(NULL));
 
-	Barcos cargador;
-	Barcos barcoSmall1 = Barcos("Kayuco", 5, false, 1);
-	Barcos barcoSmall2 = Barcos("Balsa", 5, false, 1);
-	Barcos barcoSmall3 = Barcos("Gondola", 5, false, 1);
-	Barcos barcoMedium1 = Barcos("Narcolancha", 8, false, 1);
-	Barcos barcoMedium2 = Barcos("Galera", 8, false, 1);
-	Barcos barcoMedium3 = Barcos("Drakkar", 8, false, 1);
-	Barcos barcoBig1;
-	Barcos barcoBig2 = Barcos("Cruzero de lujo", 10, true, 1);
-	Barcos barcoBig3 = Barcos("Buque de investigacion", 10, true, 1);
-
-	cargador.crearBarcos();
-	cout << barcoBig1.getNombre();
+	Barcos cargador;			// variable para cargar funciones
+	//							nombre vel. atk. vida. nombre atk
+	Barcos barcoSmall1 = Barcos("Kayuco", 5, false, 1, "atkKayuco");
+	Barcos barcoSmall2 = Barcos("Balsa", 5, false, 1, "atkBalsa");
+	Barcos barcoSmall3 = Barcos("Gondola", 5, false, 1, "atkGondola");
+	Barcos barcoMedium1 = Barcos("Narcolancha", 8, false, 1, "atkNarcolancha");
+	Barcos barcoMedium2 = Barcos("Galera", 8, false, 1, "atkGalera");
+	Barcos barcoMedium3 = Barcos("Drakkar", 8, false, 1, "atkDrakkar");
+	Barcos barcoBig1 = Barcos("Buque mercante", 10, false, 1, "atkBuqueMercante");
+	Barcos barcoBig2 = Barcos("Cruzero de lujo", 10, false, 1, "atkCruzeroDeLujo");
+	Barcos barcoBig3 = Barcos("Buque de investigacion", 10, false, 1, "atkBuqueDeInvestigacion");
 
 
+	bool juego = true;
 
 
+	while (juego == true)
+	{
+		//cargador.introApodo();
+
+		////////////////////////////////////////////////// arriba codigo debajo pruevas
+		cout << cargador.getApodo();
+		juego = false;
+	}
 
 }
