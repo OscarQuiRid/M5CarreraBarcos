@@ -132,13 +132,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Barcos.cpp" />
-    <ClCompile Include="BoatEnemigos.cpp" />
-    <ClCompile Include="BoatPlayers.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Barcos.h" />
-    <ClInclude Include="BoatEnemigos.h" />
-    <ClInclude Include="BoatPlayers.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

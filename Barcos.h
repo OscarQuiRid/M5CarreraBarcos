@@ -39,6 +39,6 @@ public:
 	void setDescripcionAtk(string pDescripcionAtk);
 
 	void introApodo(Barcos playerUno);
-	void eleccionBarco(Barcos playerUno);
+	void eleccionBarco();
 
 };

@@ -66,26 +66,162 @@ using namespace std;
 //[]	mostrar quien llego mas lejos o llego vivo al final de la carrera
 
 
+
+
 int main() {
 	srand(time(NULL));
-
-	Barcos cargador;			// variable para cargar funciones
 	Barcos playerUno;
+	Barcos cargador;			// variable para cargar funciones
+	string eleccion;
+
+
 
 	bool juego = true;
-
 	while (juego == true)
 	{
 		cargador.introApodo(playerUno);
-		cargador.eleccionBarco(playerUno);
+		cout << "Cual es tu apodo en la carrera?\n";
+		cin >> eleccion;
+		playerUno.setApodo(eleccion);
+		cout << "Bienvenido " << playerUno.getApodo() << "\n";
 
-		string name = cargador.getApodo();
-		cout << name;
 
-		cout << playerUno.getNombreBarco();;
-		juego = false;
+		///////////////////////////////////////////////////////////////////////////////////////////////// ELECCION BARCO
+		bool cat = true;
+		while (cat == true)
+		{
+			cout << "Escoje una categoria: \n \t 1.- Small Barcos. \n \t 2.- Medium Barcos. \n \t 3.- Big Barcos. \n \t 0.- Salir del Juego.\n Opcion: ";
+			cin >> eleccion;
+
+			if (eleccion == "1")
+			{
+				bool escbarco = true;
+				while (escbarco == true)
+				{
+					cout << "Tienes 3 barcos en esta categoria cual quieres escojer?";
+					cout << "\n \t 1.- Kayuco. \n \t 2.- Balsa. \n \t 3.- Gondola. \n \t 0.- Menu anterior. \n Opcion: ";
+					cin >> eleccion;
+					if (eleccion == "1")
+					{
+						bool tipBarco = true;
+						while (tipBarco == true)
+						{
+							cout << "\nkayuco \n \t Descripcion: Pequenia envarcacion tradicional utilizada por los indigenas de america central y sur";
+							cout << "\n Escojes este tipo de barco? s/n \n Respuesta: ";
+							cin >> eleccion;
+
+							if (eleccion == "s" || eleccion == "S" || eleccion == "si" || eleccion == "SI") {
+								playerUno.setNombreBarco("Kayuco");
+								playerUno.setVelocidad(2);
+								playerUno.setVidas(1);
+								playerUno.setAtk(false);
+								playerUno.setNombreAtk("atkKayuco");
+								playerUno.setDescripcionAtk("Lanza cadaveres al agua");
+
+								cat = false;
+								tipBarco = false;
+								escbarco = false;
+							}
+							else if (eleccion == "n" || eleccion == "N" || eleccion == "no" || eleccion == "NO") {
+								tipBarco = false;
+							}
+							else if (!(eleccion == "s" || eleccion == "S" || eleccion == "si" || eleccion == "SI" ||
+								eleccion == "n" || eleccion == "N" || eleccion == "no" || eleccion == "NO")) {
+								cout << "\nEleccion incorrecta";
+							}
+						}
+					}
+					if (eleccion == "2")
+					{
+						bool tipBarco = true;
+						while (tipBarco == true)
+						{
+							cout << "\n Balsa \n \t Descripcion: Embarcacion simple echa de troncos unidos entre si";																					//editar
+							cout << "\n Escojes este tipo de barco? s/n \n Respuesta: ";
+							cin >> eleccion;
+
+							if (eleccion == "s" || eleccion == "S" || eleccion == "si" || eleccion == "SI") {
+								playerUno.setNombreBarco("Balsa");																				//EDITAR DESDE AQUI
+								playerUno.setVelocidad(2);
+								playerUno.setVidas(1);
+								playerUno.setAtk(false);
+								playerUno.setNombreAtk("atkBalsa");
+								playerUno.setDescripcionAtk("Lanzar cantidades ingentes de cocos");																			//EDITAR HASTA AQUI
+
+								cat = false;
+								tipBarco = false;
+								escbarco = false;
+							}
+							else if (eleccion == "n" || eleccion == "N" || eleccion == "no" || eleccion == "NO") {
+								tipBarco = false;
+							}
+							else if (!(eleccion == "s" || eleccion == "S" || eleccion == "si" || eleccion == "SI" ||
+								eleccion == "n" || eleccion == "N" || eleccion == "no" || eleccion == "NO")) {
+								cout << "\nEleccion incorrecta";
+							}
+						}
+					}
+					if (eleccion == "3")
+					{
+						bool tipBarco = true;
+						while (tipBarco == true)
+						{
+							cout << "\n Gondola \n \t Descripcion: Embarcacion tradicional de venecia, muy conocida por por sus elegante diseños y su usos por la ciudad";																					//editar
+							cout << "\n Escojes este tipo de barco? s/n \n Respuesta: ";
+							cin >> eleccion;
+
+							if (eleccion == "s" || eleccion == "S" || eleccion == "si" || eleccion == "SI") {
+								playerUno.setNombreBarco("Gondola");																				//EDITAR DESDE AQUI
+								playerUno.setVelocidad(2);
+								playerUno.setVidas(1);
+								playerUno.setAtk(false);
+								playerUno.setNombreAtk("atkGondola");
+								playerUno.setDescripcionAtk("Toca el acordeon y a media cancion lanza su acordeon");																			//EDITAR HASTA AQUI
+
+								cat = false;
+								tipBarco = false;
+								escbarco = false;
+							}
+							else if (eleccion == "n" || eleccion == "N" || eleccion == "no" || eleccion == "NO") {
+								tipBarco = false;
+							}
+							else if (!(eleccion == "s" || eleccion == "S" || eleccion == "si" || eleccion == "SI" ||
+								eleccion == "n" || eleccion == "N" || eleccion == "no" || eleccion == "NO")) {
+								cout << "\nEleccion incorrecta";
+							}
+						}
+					}
+					if (eleccion == "0")
+					{
+						cout << "\ndentro del 0";//borrar
+
+					}
+					//else
+					//{
+					//	cout << "Eleccion incorrecta";
+					//}
+				}
+			}
+			if (eleccion == "2")
+			{
+
+
+			}
+			if (eleccion == "3")
+			{
+
+
+			}
+			if (eleccion == "0")
+			{
+
+			}
+			//else
+			//{
+			//	cout << "Eleccion incorrecta";
+			//}
+		}
 	}
-
 }
 
 
