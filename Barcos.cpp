@@ -418,49 +418,83 @@ void Barcos::eleccionBarco(string& pNombreBarco, string& pNombreAtk, bool& pPlay
 }
 
 
-void Barcos::barcoEnemigo(string& nombreBarcoe,int& velocidadBarcoe,int& Vidae,bool& atke,string& nombreatke,string& descripcionatke, int& bpe) {
+void Barcos::barcoEnemigo(string& pNombreBarco, string& pNombreAtk, bool& pPlayerUnoIniciar, bool& penemyIniciar, int pBoatPlayer) {
 
 	int random = rand() % 3 + 1;
-	switch (bpe)
+
+	switch (pBoatPlayer)
 	{
 	case 1:
-		if (true)
+		if (random == 1)
 		{
+			pNombreBarco = "";
+			pNombreAtk = "";
+			pPlayerUnoIniciar = "";
+			penemyIniciar = true;
 
 		}
-		else if (true)
+		else if (random == 2)
 		{
-
+			pNombreBarco = "";
+			pNombreAtk = "";
+			pPlayerUnoIniciar = "";
+			penemyIniciar = true;
 		}
-		else if (true)
+		else if (random == 3)
 		{
-
+			pNombreBarco = "";
+			pNombreAtk = "";
+			pPlayerUnoIniciar = "";
+			penemyIniciar = true;
 		}
-		cout << "dentro de la funcion";
-		nombreBarcoe = "a";
-		velocidadBarcoe = 100;
-		Vidae = 100;
-		atke = true;
-		nombreatke = "b";
-		descripcionatke = "c";
 		break;
 	case 2:
-		cout << "dentro de la funcion";
-		nombreBarcoe = "a";
-		velocidadBarcoe = 100;
-		Vidae = 100;
-		atke = true;
-		nombreatke = "b";
-		descripcionatke = "c";
+		if (random == 1)
+		{
+			pNombreBarco = "";
+			pNombreAtk = "";
+			pPlayerUnoIniciar = "";
+			penemyIniciar = true;
+
+		}
+		else if (random == 2)
+		{
+			pNombreBarco = "";
+			pNombreAtk = "";
+			pPlayerUnoIniciar = "";
+			penemyIniciar = true;
+		}
+		else if (random == 3)
+		{
+			pNombreBarco = "";
+			pNombreAtk = "";
+			pPlayerUnoIniciar = "";
+			penemyIniciar = true;
+		}
 		break;
 	case 3:
-		cout << "dentro de la funcion";
-		nombreBarcoe = "a";
-		velocidadBarcoe = 100;
-		Vidae = 100;
-		atke = true;
-		nombreatke = "b";
-		descripcionatke = "c";
+		if (random == 1)
+		{
+			pNombreBarco = "";
+			pNombreAtk = "";
+			pPlayerUnoIniciar = "";
+			penemyIniciar = true;
+
+		}
+		else if (random == 2)
+		{
+			pNombreBarco = "";
+			pNombreAtk = "";
+			pPlayerUnoIniciar = "";
+			penemyIniciar = true;
+		}
+		else if (random == 3)
+		{
+			pNombreBarco = "";
+			pNombreAtk = "";
+			pPlayerUnoIniciar = "";
+			penemyIniciar = true;
+		}
 		break;
 	}
 }

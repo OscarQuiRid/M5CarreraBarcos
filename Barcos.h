@@ -40,7 +40,7 @@ public:
 
 	void introApodo(Barcos playerUno);
 	void eleccionBarco(string& pNombreBarco, string& pNombreAtk, bool& pPlayerUnoIniciar, int& pBoatPlayer);
-	void barcoEnemigo(string& nombreBarcoe, int& velocidadBarcoe, int& Vidae, bool& atke, string& nombreatke, string& descripcionatke,int& bpe);
+	void barcoEnemigo(string& pNombreBarco, string& pNombreAtk, bool& pPlayerUnoIniciar, bool& penemyIniciar, int pBoatPlayer);
 
 
 

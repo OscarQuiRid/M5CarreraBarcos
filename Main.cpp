@@ -34,9 +34,11 @@ using namespace std;
 //[x] presentacion
 //[x] saludar 
 //[x] preguntar nombre
+//[] apodo para los enemigos rand de una lista de nombres con un switch
 //[]   bucle del juego
-//[-]	 preguntar que categoria quiere competir
-//[-]		preguntar que barco quiere seleccionar
+//[x]	 preguntar que categoria quiere competir
+//[x]		preguntar que barco quiere seleccionar
+//[]		  asignar barco a los dos enemigos 
 //[]			iniciar la carrera contra la maquina
 //[]					se lanza el dado para el usuario
 //[]						tirar el dado,sumar dice a la velocidad
@@ -72,45 +74,53 @@ int main() {
 	srand(time(NULL));
 	Barcos cargador;			// variable para cargar funciones
 	Barcos playerUno, enemyUno, enemyDos;
-	string eleccion;
-	bool playerUnoIniciar = false, enemyUnoIniciar = false, enemyDosIniciar = false;
+	string eleccion = "", nomBar = "", nomAtk = "";
+	bool playerUnoIniciar = false, enemyIniciar = false, atk = false;
 	int catBoatPlayer = 0;
 
 	bool juego = true;
 	while (juego == true)
 	{
+		///////////////////////////////////////////////////////////////////////////////////////////////// INTRO Y APODO AL JUEGO
 		cargador.introApodo(playerUno);
 		cout << "Cual es tu apodo en la carrera?\n";
 		cin >> eleccion;
 		playerUno.setApodo(eleccion);
 		cout << "Bienvenido " << playerUno.getApodo() << "\n";
-
+		// funcion rand para escojer el nombre del enemigo
+		
 		///////////////////////////////////////////////////////////////////////////////////////////////// ELECCION BARCO JUGADOR
+		cargador.eleccionBarco(nomBar, nomAtk, playerUnoIniciar, catBoatPlayer);
+		// iniciar el barco del player (todos los parametros
 
-		// NECESITARE QUE ME DEVUELVA	string NOMBRE DEL BARCO		string NOMBREATK	 boolean playeunoiniciar	int boatp
 
 		///////////////////////////////////////////////////////////////////////////////////////////////// ELECCION BARCO ENEMIGO
 		if (playerUnoIniciar == true)
 		{
-			cout << "dentro del if enemigo";
-			// enemigos escojen barco al azar, de la misa categoria donde lo escojio el player
-			string nomBarcoEnemy = "";
-			string nomAtkEnemy = "";
-			string descAtkEnemy = "";
-			int velocidadBarcoe = 0; int Vidae = 0;
-			bool atke = false; 
 
-			cargador.barcoEnemigo(nomBarcoEnemy, velocidadBarcoe, Vidae, atke, nomAtkEnemy, descAtkEnemy, catBoatPlayer);
+			cout << "antes de llamar a barcoEnemigo:" << endl << "Nombre del Barco: " << nomBar << endl << "Nombre del Ataque: " << nomAtk << endl << "playerUnoIniciar: " << (playerUnoIniciar ? "true" : "false") << endl << "catBoatPlayer: " << catBoatPlayer << endl;
 
+			cargador.barcoEnemigo(nomBar, nomAtk, playerUnoIniciar, enemyIniciar, catBoatPlayer);
 
+			cout << "Despues de llamar a barcoEnemigo:" << endl << "Nombre del Barco: " << nomBar << endl << "Nombre del Ataque: " << nomAtk << endl << "playerUnoIniciar: " << (playerUnoIniciar ? "true" : "false") << endl << "catBoatPlayer: " << catBoatPlayer << endl;
+
+			// cargar todo a enemyUno
+			// if que si el player y el rival son true entrar a la funcion
+			// reiniciar ese boolean a false
+			// volver a llamar a la funcion
+			// cargar todo a enemyDos
+			// si la funcion iniciar la carrera 
+			if (enemyIniciar == true)
+			{
+
+			}
 		}
+
 	}
-
-
-
-
-
 }
+
+
+
 
 
 ////							nombre vel. atk. vida. nombre atk
