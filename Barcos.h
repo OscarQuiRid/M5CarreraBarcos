@@ -38,13 +38,17 @@ public:
 	void setNombreAtk(string pNombreAtk);
 	void setDescripcionAtk(string pDescripcionAtk);
 
-	void introApodo(Barcos playerUno);
+	void intro();
 	void eleccionBarco(string& pNombreBarco, string& pNombreAtk, bool& pPlayerUnoIniciar, int& pBoatPlayer);
-	void barcoEnemigo(string& pNombreBarco, string& pNombreAtk, bool& pPlayerUnoIniciar, bool& penemyIniciar, int pBoatPlayer);
+	void barcoEnemigo(string& pNombreBarco, string& pNombreAtk,int pBoatPlayer);
+	void apodoEnemigo(string& pApodoEnemyUno, string& pApodoEnemyDos, bool& penemyUnoIniciar, bool& penemyDosIniciar);
+	void presentacionCarrera(string& pText, string& pDisparo);
 
 
 
 
-
-
+	void pausaSeiscientos();
+	void pausaMil();
+	string tab();
+	string salto();
 };

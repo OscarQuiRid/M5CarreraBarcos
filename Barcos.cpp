@@ -1,5 +1,7 @@
 #include "Barcos.h"
 #include <iostream>
+#include <array>
+#include <windows.h>
 
 using namespace std;
 //ordenar ctr+k >> ctr+d/f
@@ -8,6 +10,22 @@ using namespace std;
 //int Barcos::getDado() {
 //	return (rand() % 6 + 1);;
 //}
+void Barcos::pausaSeiscientos() {
+	Sleep(600);
+}
+
+void Barcos::pausaMil() {
+	Sleep(1000);
+}
+
+string Barcos::tab() {
+	return "\t";
+}
+
+string Barcos::salto() {
+	return "\n";
+}
+
 Barcos::Barcos() {
 	// Constructor por defecto
 }
@@ -76,12 +94,13 @@ void Barcos::setDescripcionAtk(string pDescripcionAtk) {
 	descripcionAtk = pDescripcionAtk;
 }
 
-void Barcos::introApodo(Barcos playerUno) {
-	string playerApodo;
-	cout << "En este juego vamos a ver unas trepidantes carreras de barcos,\n";
-	cout << "en las cuales vamos a disponer de 6 turnos, competiremos contra 2 enemigos y podremos atacar o lograr ventajas sobre el resto de contrincantes.\n";
+void Barcos::intro() {
+	cout << "     _ _   _ _____ ____  ___    ____  _____   ____    _      ____   ____ ___   ____" + salto();
+	cout << "    | | | | | ____/ ___|/ _ \\  | _  \\| ____| | __ )  / \\    | _  \\ / ___/ _ \\ / ___|" + salto();
+	cout << " _| | | | | | _| | |  _| | | | | | | |  _|   |  _ \\ / _ \\   | |_) | |  | | | \\___ \\" + salto();
+	cout << "| |_| | |_| | |__| |_| | |_| | | |_| | |___  | |_) / ___ \\  | _ < | |__| |_| |___) |" + salto();
+	cout << "\\___ / \\___/|_____\\____|\\___/  |____/|_____| |____/_/   \\_\\_|_\\ \\_\\ ____\\___/|____ /" + salto() + salto() + salto();
 }
-
 
 void Barcos::eleccionBarco(string& pNombreBarco, string& pNombreAtk, bool& pPlayerUnoIniciar, int& pBoatPlayer) {
 	string eleccion;
@@ -213,8 +232,8 @@ void Barcos::eleccionBarco(string& pNombreBarco, string& pNombreAtk, bool& pPlay
 					bool tipBarco = true;
 					while (tipBarco == true)
 					{
-						cout << "\nNarcolancha \n \t Descripcion: ";
-						cout << "\n Escojes este tipo de barco? s/n \n Respuesta: Embarcacion inchable usada originalmente para rescate, buceo y exploracion de aguas costeras, ahora adaptada para trabajar!";
+						cout << "\nNarcolancha \n \t Descripcion: Embarcacion inchable usada originalmente para rescate, buceo y exploracion de aguas costeras, ahora adaptada para trabajar!";
+						cout << "\n Escojes este tipo de barco? s/n \n Respuesta:";
 						cin >> eleccion;
 
 						if (eleccion == "s" || eleccion == "S" || eleccion == "si" || eleccion == "SI") {
@@ -313,7 +332,7 @@ void Barcos::eleccionBarco(string& pNombreBarco, string& pNombreAtk, bool& pPlay
 			while (escbarco == true)
 			{
 				cout << "Tienes 3 barcos en esta categoria cual quieres escojer?";
-				cout << "\n \t 1.- Buque mercante. \n \t 2.- Crucero de lujo. \n \t 3.- Buque de investigacion. \n \t 0.- Menu anterior. \n Opcion: ";
+				cout << "\n \t 1.- Buque Mercante. \n \t 2.- Crucero Swinger De Lujo. \n \t 3.- Buque De Investigacion. \n \t 0.- Menu anterior. \n Opcion: ";
 				cin >> eleccion;
 				if (eleccion == "1")
 				{
@@ -327,7 +346,7 @@ void Barcos::eleccionBarco(string& pNombreBarco, string& pNombreAtk, bool& pPlay
 						if (eleccion == "s" || eleccion == "S" || eleccion == "si" || eleccion == "SI") {
 
 							pNombreBarco = "Buque mercante";
-							pNombreAtk = "atkBuquemercante";
+							pNombreAtk = "atkBuqueMercante";
 							pPlayerUnoIniciar = true;
 							pBoatPlayer = 3;
 
@@ -349,13 +368,13 @@ void Barcos::eleccionBarco(string& pNombreBarco, string& pNombreAtk, bool& pPlay
 					bool tipBarco = true;
 					while (tipBarco == true)
 					{
-						cout << "\n Crucero swinger de lujo \n \t Descripcion: Cruzero donde todos los pasajeros son jubilados y liberales";
+						cout << "\n Crucero Swinger De Lujo \n \t Descripcion: Cruzero donde todos los pasajeros son jubilados y liberales";
 						cout << "\n Escojes este tipo de barco? s/n \n Respuesta: ";
 						cin >> eleccion;
 
 						if (eleccion == "s" || eleccion == "S" || eleccion == "si" || eleccion == "SI") {
-							pNombreBarco = "Crucero de lujo";
-							pNombreAtk = "atkCruceroDeLujo";
+							pNombreBarco = "Crucero Swinger De Lujo";
+							pNombreAtk = "atkCruceroSwingerDeLujo";
 							pPlayerUnoIniciar = true;
 							pBoatPlayer = 3;
 
@@ -377,13 +396,13 @@ void Barcos::eleccionBarco(string& pNombreBarco, string& pNombreAtk, bool& pPlay
 					bool tipBarco = true;
 					while (tipBarco == true)
 					{
-						cout << "\n Buque de Investigacion \n \t Descripcion: buque dedicado a la investigacion en alta mar";
+						cout << "\n Buque De Investigacion \n \t Descripcion: buque dedicado a la investigacion en alta mar";
 						cout << "\n Escojes este tipo de barco? s/n \n Respuesta: ";
 						cin >> eleccion;
 
 						if (eleccion == "s" || eleccion == "S" || eleccion == "si" || eleccion == "SI") {
-							pNombreBarco = "Buque de Investigacion";
-							pNombreAtk = "atkBuquedeInvestigacion";
+							pNombreBarco = "Buque De Investigacion";
+							pNombreAtk = "atkBuqueDeInvestigacion";
 							pPlayerUnoIniciar = true;
 							pBoatPlayer = 3;
 
@@ -417,8 +436,7 @@ void Barcos::eleccionBarco(string& pNombreBarco, string& pNombreAtk, bool& pPlay
 	}
 }
 
-
-void Barcos::barcoEnemigo(string& pNombreBarco, string& pNombreAtk, bool& pPlayerUnoIniciar, bool& penemyIniciar, int pBoatPlayer) {
+void Barcos::barcoEnemigo(string& pNombreBarco, string& pNombreAtk, int pBoatPlayer) {
 
 	int random = rand() % 3 + 1;
 
@@ -427,74 +445,82 @@ void Barcos::barcoEnemigo(string& pNombreBarco, string& pNombreAtk, bool& pPlaye
 	case 1:
 		if (random == 1)
 		{
-			pNombreBarco = "";
-			pNombreAtk = "";
-			pPlayerUnoIniciar = "";
-			penemyIniciar = true;
-
+			pNombreBarco = "Kayuco";
+			pNombreAtk = "atkKayuco";
 		}
 		else if (random == 2)
 		{
-			pNombreBarco = "";
-			pNombreAtk = "";
-			pPlayerUnoIniciar = "";
-			penemyIniciar = true;
+			pNombreBarco = "Balsa";
+			pNombreAtk = "atkBalsa";
 		}
 		else if (random == 3)
 		{
-			pNombreBarco = "";
-			pNombreAtk = "";
-			pPlayerUnoIniciar = "";
-			penemyIniciar = true;
+			pNombreBarco = "Gondola";
+			pNombreAtk = "atkGondola";
 		}
 		break;
 	case 2:
 		if (random == 1)
 		{
-			pNombreBarco = "";
-			pNombreAtk = "";
-			pPlayerUnoIniciar = "";
-			penemyIniciar = true;
-
+			pNombreBarco = "Narcolancha";
+			pNombreAtk = "Narcolancha";
 		}
 		else if (random == 2)
 		{
-			pNombreBarco = "";
-			pNombreAtk = "";
-			pPlayerUnoIniciar = "";
-			penemyIniciar = true;
+			pNombreBarco = "Galera";
+			pNombreAtk = "Galera";
 		}
 		else if (random == 3)
 		{
-			pNombreBarco = "";
-			pNombreAtk = "";
-			pPlayerUnoIniciar = "";
-			penemyIniciar = true;
+			pNombreBarco = "Drakkar";
+			pNombreAtk = "Drakkar";
 		}
 		break;
 	case 3:
 		if (random == 1)
 		{
-			pNombreBarco = "";
-			pNombreAtk = "";
-			pPlayerUnoIniciar = "";
-			penemyIniciar = true;
-
+			pNombreBarco = "Buque Mercante";
+			pNombreAtk = "atk";
 		}
 		else if (random == 2)
 		{
-			pNombreBarco = "";
-			pNombreAtk = "";
-			pPlayerUnoIniciar = "";
-			penemyIniciar = true;
+			pNombreBarco = "Crucero Swinger De Lujo";
+			pNombreAtk = "atkCruceroSwingerDeLujo";
 		}
 		else if (random == 3)
 		{
-			pNombreBarco = "";
-			pNombreAtk = "";
-			pPlayerUnoIniciar = "";
-			penemyIniciar = true;
+			pNombreBarco = "Buque De Investigacion";
+			pNombreAtk = "atkBuqueDeInvestigacion";
 		}
 		break;
 	}
+}
+
+void Barcos::apodoEnemigo(string& pApodoEnemyUno, string& pApodoEnemyDos, bool& penemyUnoIniciar, bool& penemyDosIniciar) {
+
+	bool bucleActivo = true;
+	while (bucleActivo == true)
+	{
+		int randomUno = rand() % 9;
+		int randomDos = rand() % 9;
+		string nombres[] = {"Muhammad","John","Maria","Wang","Li","Mohamed","Sofía","Juan","Yusuf","Chen"};
+		pApodoEnemyUno = nombres[randomUno];
+		pApodoEnemyDos = nombres[randomDos];
+		if (pApodoEnemyUno != pApodoEnemyDos)
+		{
+			bucleActivo = false;
+			penemyUnoIniciar = true;
+			penemyDosIniciar = true;
+		}
+	}
+}
+
+void Barcos::presentacionCarrera(string& pText, string& pDisparo) {
+ 
+	pText = tab() + tab() + "Bienvenidos a la carrera mas emocionante del anyo. Preparense para la adrenalina,la velocidad y la competencia en su maxima expresion." + salto() + tab() + tab() + tab() +"Que gane el mejor! 3...2...1..." + salto();
+	pDisparo = tab() + tab() + tab() + tab() + " ____  _   _ __  __ __  __ __  __ _ _ _ " + salto() +
+			   tab() + tab() + tab() + tab() + "|  _ \\| | | |  \\/  |  \\/  |  \\/  | | | |" + salto() +
+		       tab() + tab() + tab() + tab() + "| |_) | | | | |\\/| | |\\/| | |\\/| | | | |" + salto() +
+		       tab() + tab() + tab() + tab() + "|  __/| |_| | |  | | |  | | |  | |_|_|_|" + salto() +
+		       tab() + tab() + tab() + tab() + "|_|    \\___/|_|  |_|_|  |_|_|  |_(_|_|_)" + salto();
 }
