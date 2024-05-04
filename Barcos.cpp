@@ -564,13 +564,12 @@ void Barcos::nitro(int& turnoPlayer, int& turnoEnemyUno, int& turnoEnemyDos, int
 
 	string eleccion = "";
 	int fracaso = 0;
-
+	bool usarNitro = true;
 	if (turnoPlayer >= 2)
 	{
-		bool usarNitro = true;
 		while (usarNitro == true)
 		{
-			cout << "Quieres usar un chute de nitro?(corres el riesgo de perder el valor generado en el dado)";
+			cout << "Quieres usar un chute de nitro?(corres el riesgo de perder el valor generado en el dado) s/n \n Respuesta: ";
 			cin >> eleccion;
 			if (eleccion == "s" || eleccion == "S" || eleccion == "si" || eleccion == "SI") {
 
@@ -579,31 +578,31 @@ void Barcos::nitro(int& turnoPlayer, int& turnoEnemyUno, int& turnoEnemyDos, int
 				if (fracaso == 0)
 				{
 					pDicePlayer = 0;
-					cout << pText << " Nitro no te a funcionado! Pierdes el valor del dado!!!";
+					cout << pText << " Nitro no te a funcionado! Pierdes el valor del dado!!!\n";
 				}
 				else
 				{
-					pDicePlayer += pDicePlayer;
-					cout << pText << " Bienn!! has multiplicado el resultado del dado x2";
+					pDicePlayer *= 2;
+					cout << pText << " Bienn!! has multiplicado el resultado del dado x2\n";
 				}
 				turnoPlayer = 0;
+				usarNitro = false;
 			}
 			else if (eleccion == "n" || eleccion == "N" || eleccion == "no" || eleccion == "NO") {
 				usarNitro = false;
-				break;
 			}
 			else if (!(eleccion == "s" || eleccion == "S" || eleccion == "si" || eleccion == "SI" ||
 				eleccion == "n" || eleccion == "N" || eleccion == "no" || eleccion == "NO")) {
-				cout << "\nEleccion incorrecta";
+				cout << "\nEleccion incorrecta\n";
 			}
 		}
 	}
+	usarNitro = true;
 	if (turnoEnemyUno >= 2)
 	{
-		bool usarNitro = true;
 		while (usarNitro == true)
 		{
-			fracaso = rand() % 1;
+			fracaso = rand() % 2;
 			if (fracaso == 1) {
 
 				fracaso = rand() % 3;
@@ -611,27 +610,27 @@ void Barcos::nitro(int& turnoPlayer, int& turnoEnemyUno, int& turnoEnemyDos, int
 				if (fracaso == 0)
 				{
 					pDiceEnemyUno = 0;
-					cout << "Nitro de " << pTextUno << " no a funcionado! Pierde el valor del dado!!!";
+					cout << "Nitro de " << pTextUno << " no a funcionado! Pierde el valor del dado!!!\n";
 				}
 				else
 				{
-					pDiceEnemyUno += pDiceEnemyUno;
-					cout << pTextUno << " Uso nitro!! ha multiplicado el resultado del dado x2";
+					pDiceEnemyUno *= 2;
+					cout << pTextUno << " Uso nitro!! ha multiplicado el resultado del dado x2\n";
 				}
 				turnoEnemyUno = 0;
+				usarNitro = false;
 			}
 			else if (fracaso == 0) {
 				usarNitro = false;
-				break;
 			}
 		}
 	}
+	usarNitro = true;
 	if (turnoEnemyDos >= 2)
 	{
-		bool usarNitro = true;
 		while (usarNitro == true)
 		{
-			fracaso = rand() % 1;
+			fracaso = rand() % 2;
 			if (fracaso == 1) {
 
 				fracaso = rand() % 3;
@@ -639,21 +638,20 @@ void Barcos::nitro(int& turnoPlayer, int& turnoEnemyUno, int& turnoEnemyDos, int
 				if (fracaso == 0)
 				{
 					pDiceEnemyDos = 0;
-					cout << "Nitro de " << pTextDos << " no a funcionado! Pierde el valor del dado!!!";
+					cout << "Nitro de " << pTextDos << " no a funcionado! Pierde el valor del dado!!!\n";
 				}
 				else
 				{
-					pDiceEnemyDos += pDiceEnemyDos;
-					cout << pTextDos << " Uso nitro!! ha multiplicado el resultado del dado x2";
+					pDiceEnemyDos *= 2;
+					cout << pTextDos << " Uso nitro!! ha multiplicado el resultado del dado x2\n";
 				}
 				turnoEnemyDos = 0;
+				usarNitro = false;
 			}
 			else if (fracaso == 0) {
 				usarNitro = false;
-				break;
 			}
 		}
-
 	}
 }
 
@@ -662,57 +660,88 @@ void Barcos::printCarrera(int pPuntosPlayer, int pPuntosEnemyUno, int pPuntosEne
 	string player[72];
 	string enemyUno[72];
 	string enemyDos[72];
-	string espacio = " ";
-	string print = "";
 
-	for (size_t i = 0; i <= pPuntosPlayer; i++)
-	{
-		if (i == pPuntosPlayer)
-		{
-			player[i] = espacio + pText;
+	for (int i = 0; i <= pPuntosPlayer && i < 72; ++i) {
+		if (i == pPuntosPlayer) {
+			player[i] = pText;
 		}
-		else
-		{
+		else {
 			player[i] = "~";
 		}
 	}
-	for (size_t i = 0; i <= pPuntosEnemyUno; i++)
-	{
-		if (i == pPuntosEnemyUno)
-		{
-			enemyUno[i] = espacio + pTextUno;
+	for (int i = 0; i <= pPuntosEnemyUno && i < 72; ++i) {
+		if (i == pPuntosEnemyUno) {
+			enemyUno[i] = pTextUno;
 		}
-		else
-		{
+		else {
 			enemyUno[i] = "~";
 		}
 	}
-	for (size_t i = 0; i <= pPuntosEnemyDos; i++)
-	{
-		if (i == pPuntosEnemyDos)
-		{
-			enemyDos[i] = espacio + pTextDos;
+	for (int i = 0; i <= pPuntosEnemyDos && i < 72; ++i) {
+		if (i == pPuntosEnemyDos) {
+			enemyDos[i] = pTextDos;
 		}
-		else
-		{
+		else {
 			enemyDos[i] = "~";
 		}
 	}
-	for (int i = 0; i < player->length() && !player[i].empty(); ++i) {
-		
-		print = print + player[i];
+	for (int i = 0; i < 72 && !player[i].empty(); ++i) {
+		cout << player[i];
 	}
-	cout << print;
-	print = "";
-	for (int i = 0; i < enemyUno->length() && !enemyUno[i].empty(); ++i) {
+	cout << "\n";
 
-		print = print + enemyUno[i];
+	// Imprimir la carrera del enemigo 1 (`enemyUno`)
+	for (int i = 0; i < 72 && !enemyUno[i].empty(); ++i) {
+		cout << enemyUno[i];
 	}
-	cout << print;
-	print = "";
-	for (int i = 0; i < enemyDos->length() && !enemyDos[i].empty(); ++i) {
+	cout << "\n";
 
-		print = print + enemyDos[i];
+	// Imprimir la carrera del enemigo 2 (`enemyDos`)
+	for (int i = 0; i < 72 && !enemyDos[i].empty(); ++i) {
+		cout << enemyDos[i];
 	}
-	cout << print;
+	cout << "\n";
+};
+
+void Barcos::printGanador(int pPuntosPlayer, int pPuntosEnemyUno, int pPuntosEnemyDos, string pText, string pTextUno, string pTextDos) {
+	string ganador;
+	int maxPuntos = pPuntosPlayer;
+
+	if (pPuntosEnemyUno > maxPuntos) {
+		maxPuntos = pPuntosEnemyUno;
+		ganador = pTextUno;
+	}
+	if (pPuntosEnemyDos > maxPuntos) {
+		maxPuntos = pPuntosEnemyDos;
+		ganador = pTextDos;
+	}
+
+	cout << "**************************" << endl;
+	cout << "*       ¡GANADOR!        *" << endl;
+	cout << "**************************" << endl;
+	cout << "   El ganador es: " << ganador << endl;
+	cout << "   Puntos obtenidos:" << endl;
+	cout << "   " << pText << ": " << pPuntosPlayer << endl;
+	cout << "   " << pTextUno << ": " << pPuntosEnemyUno << endl;
+	cout << "   " << pTextDos << ": " << pPuntosEnemyDos << endl;
+}
+
+void Barcos::salirJuego(bool salirJuego) {
+
+	bool menu = true;
+	while (menu == true)
+	{
+		char eleccion;
+		cout << "Quieres jugar otra partida o salir? (Espacio/Salir): \n Respuesta: ";
+		cin >> eleccion;
+
+		if (eleccion != 's' && eleccion != 'S') {
+			salirJuego = false;
+			menu = false;
+		}
+		else
+		{
+			menu = false;
+		}
+	}
 }

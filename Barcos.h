@@ -54,10 +54,11 @@ public:
 	void dice(int& pDicePlayer, int& pDiceEnemyUno, int& pDiceEnemyDos);
 	void nitro(int& turnoPlayer, int& turnoEnemyUno, int& turnoEnemyDos, int& pDicePlayer, int& pDiceEnemyUno, int& pDiceEnemyDos, string pText, string pTextUno, string pTextDos);
 	void printCarrera(int pPuntosPlayer, int pPuntosEnemyUno, int pPuntosEnemyDos, string pText, string pTextUno, string pTextDos);
+	void printGanador(int pPuntosPlayer, int pPuntosEnemyUno, int pPuntosEnemyDos, string pText, string pTextUno, string pTextDos);
+	void salirJuego(bool salirJuego);
 
 	void pausaSeiscientos();
 	void pausaMil();
 	string tab();
 	string salto();
-
 };

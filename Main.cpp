@@ -6,9 +6,13 @@
 #include <Windows.h>
 #include <string>
 
+
+
+
 using namespace std;
 //ordenar ctr+k >> ctr+d/f
 //comentar ctr+k >> ctr+c/u
+//ctr
 
  //turno 0
 	// tiro dado
@@ -89,7 +93,7 @@ int main() {
 	{
 		cargador.apodoEnemigo(eleccion, reutilizable, enemyUnoIniciar, enemyDosIniciar);
 		enemyUno.setApodo(eleccion);
-		enemyDos.setApodo(eleccion);
+		enemyDos.setApodo(reutilizable);
 
 		///////////////////////////////////////////////////////////////////////////////////////////////// ELECCION BARCO JUGADOR
 		cargador.eleccionBarco(reutilizableDos, playerUnoIniciar, catBoatPlayer);
@@ -104,22 +108,18 @@ int main() {
 		///////////////////////////////////////////////////////////////////////////////////////////////// INICIO PARTIDA
 		cargador.presentacionCarrera(eleccion, reutilizable);
 		cout << eleccion << reutilizable;
-		if (playerUnoIniciar == true and enemyUnoIniciar == true and enemyDosIniciar == false)
+		if (playerUnoIniciar == true and enemyUnoIniciar == true and enemyDosIniciar == true)
 		{
-			playerUno.setTurno(turnoPlayer), enemyUno.setTurno(turnoEnemyUno), enemyDos.setTurno(turnoEnemyDos);
+			playerUno.setTurno(0), enemyUno.setTurno(0), enemyDos.setTurno(0);
 			reutilizable = playerUno.getApodo(), reutilizableDos = enemyUno.getApodo(), reutilizableTres = enemyDos.getApodo();
 
-			for (int turno = 0; turno <= maxRondas; turno++)
+			for (int vuelta = 0; vuelta <= maxRondas; vuelta++)
 			{	
-				// reiniciamos valor que seran editados en las siguientes lineas
-
-				turnoPlayer = playerUno.getTurno(), turnoEnemyUno = enemyUno.getTurno(), turnoEnemyDos = enemyDos.getTurno();
-
 				// lanzar 3 dados
 				cargador.dice(reciclable, reciclableUno, reciclableDos);
-				cout << playerUno.getApodo() << " tira el dado y le sale: " << reciclable;
-				cout << enemyUno.getApodo() << " tira el dado y le sale: " << reciclableUno;
-				cout << enemyDos.getApodo() << " tira el dado y le sale: " << reciclableDos;
+				cout << playerUno.getApodo() << " tira el dado y le sale: " << reciclable << "\n";
+				cout << enemyUno.getApodo() << " tira el dado y le sale: " << reciclableUno << "\n";
+				cout << enemyDos.getApodo() << " tira el dado y le sale: " << reciclableDos << "\n";
 
 				// pregunta nitro
 				cargador.nitro(turnoPlayer, turnoEnemyUno, turnoEnemyDos, reciclable, reciclableUno, reciclableDos, reutilizable, reutilizableDos, reutilizableTres);
@@ -136,25 +136,16 @@ int main() {
 				// print puntos
 				cargador.printCarrera(playerUno.getPuntos(), enemyUno.getPuntos(), enemyDos.getPuntos(), reutilizable, reutilizableDos, reutilizableTres);
 
-
 				// asignar turno
-				playerUno.setTurno(turnoPlayer), enemyUno.setTurno(turnoEnemyUno), enemyDos.setTurno(turnoEnemyDos);
 				turnoPlayer++, turnoEnemyUno++, turnoEnemyDos++;
 			}
+			cargador.printGanador(playerUno.getPuntos(), enemyUno.getPuntos(), enemyDos.getPuntos(), reutilizable, reutilizableDos, reutilizableTres);
+			cargador.salirJuego(juego);
 
-			// printar ganador
-			// preguntar si quiere jugar otra partida
 		}
 	}
+	cout << "\n Gracias po jugar!! Hasta la proxima!! \n";
 }
-
-//falta printar la carrera
-//falta banner y nombre del jugador ganador
-//falta preguntar si quiere jugar otra partida
-
-
-
-
 
 //#include <iostream>
 //#include <chrono>   // Para std::chrono::milliseconds
@@ -177,7 +168,3 @@ int main() {
 //
 //	return 0;
 //}
-
-//cout << "despeus enemy uno:" << endl << "Nombre del Barco: " << enemyUno.getNombreBarco() << endl << "Nombre del Ataque: " << enemyUno.getNombreAtk() << endl << "playerUnoIniciar: " << (playerUnoIniciar ? "true" : "false") << endl << "catBoatPlayer: " << catBoatPlayer << endl;
-//cout << "despeus player:" << endl << "Nombre del Barco: " << playerUno.getNombreBarco() << endl << "Nombre del Ataque: " << playerUno.getNombreAtk() << endl << "playerUnoIniciar: " << (playerUnoIniciar ? "true" : "false") << endl << "catBoatPlayer: " << catBoatPlayer << endl;
-//cout << "despeus enemy dos:" << endl << "Nombre del Barco: " << enemyDos.getNombreBarco() << endl << "Nombre del Ataque: " << enemyDos.getNombreAtk() << endl << "playerUnoIniciar: " << (playerUnoIniciar ? "true" : "false") << endl << "catBoatPlayer: " << catBoatPlayer << endl;
