@@ -10,17 +10,28 @@ using namespace std;
 //ordenar ctr+k >> ctr+d/f
 //comentar ctr+k >> ctr+c/u
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// IDEAS
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// categoria que en la que quiere participar, barcos pequeños medianos o grandes
-// crear distintos barcos, cayuco lancha transatlantico etc 
-//					stats ideal a su tamaño y caracteristicas 
-// crear atakes especiales para los distintos tipos de barco que cada uno tenga su caracteristica en funcion a su historia
-//					que la maquina escoja un barco de manera random dentro de la categoria que escojio el player
-//					los ataques se van a cargar ejemplo: turno 1 1/2, turno dos 1, turno tres pregunta para usar ataque, turno cuatro 1/2, turno cinco 1, turno 6 pregunta para usar ataque
-//					si no usas el ataque no acumulas otro el maximo es 1
-// 
+ //turno 0
+	// tiro dado
+	// sumo puntos
+ //turno 1
+	// tiro dado
+	// sumo puntos
+ //turno 2
+	// tiro dado
+	// pregunta nitro
+	// sumo puntos
+ //turno 3
+	// tiro dado
+	// pregunta nitro si no se a usado
+	// sumo puntos
+ //turno 4
+	// tiro dado
+	// pregunta nitro si no se a usado
+	// sumo puntos
+ //turno 5
+	// tiro dado
+	// pregunta nitro o pregunta nitro si no se a usado
+	// sumo puntos
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // ANOTACIONES
@@ -40,29 +51,33 @@ using namespace std;
 //[x]		asignar barco a los dos enemigos	
 //[x]		comprobar que todos tengan asignado nombre	  
 //[x]			bucle for de la carrera
-//[x]		        presentacion		-- hola a todos bla bla participantes tal y tal con tal barco, finalizar con un pam gigante (da un string vacio y lo devuelve con todo esto)				
-//[]				lanzar 3 dados		-- 3 parametros de entrada, devuelve 3 parametros, contiene 3 rand uno para cada uno, 
+//[x]		        presentacion		-- hola a todos bla bla participantes tal y tal con tal barco, finalizar con un pam gigante (da un string vacio y lo devuelve con todo esto)
+//[x]				mostrar dado		-- meustra el resultado de los dados de los 3 jugadores				
+//[x]				lanzar 3 dados		-- 3 parametros de entrada, devuelve 3 parametros, contiene 3 rand uno para cada uno, 
 //												logica del nitro junto a los dados, si es turno
 //													(i del bucle for == 2 lanzar pregunta de si quiere usarlo si es si logica de nitro multiplicando el dado x2)	
 //													los enemigos escojeran si usar el nitro en base a un rand 0 false 1 true
-//[]				printar dado		-- linea inferior printar los barcos con ~~~~~apodo (tantos ~ como puntos tiene ese jugador)
+//[x]				calcular puntos
+//[]				printar carrera		-- linea inferior printar los barcos con ~~~~~apodo (tantos ~ como puntos tiene ese jugador)
 //				FINAL DEL BUCLE
 //[]				print nombre jugador, print banner winner!!!		https://www.creativefabrica.com/es/tools/ascii-art-generator/?text=WINNER%21%21%21%21
 //[]			pregunta salir o otra partida
 //
-//[] crear funcion para simular que los textos se escriben
+//[?] crear funcion para simular que los textos se escriben
 //
-
 
 int main() {
 	srand(time(NULL));
+
+	int maxRondas = 6;
+
 	Barcos cargador;			// variable para cargar funciones
 	Barcos playerUno, enemyUno, enemyDos;
-	string eleccion = "", nomBar = "", nomAtk = "", reutilizable = "";
-	bool playerUnoIniciar = false, enemyUnoIniciar = false, enemyDosIniciar = false, atk = false, genB = true, Logicajuego = true, juego = false;
-	int catBoatPlayer = 0;
+	string eleccion = "", reutilizable = "", reutilizableDos = "";
+	bool playerUnoIniciar = false, enemyUnoIniciar = false, enemyDosIniciar = false, juego = true;
+	int catBoatPlayer = 0, reciclable = 0, reciclableUno = 0, reciclableDos = 0, turnoPlayer = 0, turnoEnemyUno = 0, turnoEnemyDos = 0, pntPlayer = 0, pntEnemyUno = 0, pntEnemyDos = 0;	// cambiar turnos y puntos por arrays
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////// INTRO Y APODOS
+	////////////////////////////////////////////////////////////////////////////////////////////////////////// INTRO Y APODOS
 	cargador.intro();
 	cout << "Cual es tu apodo en la carrera?\n";
 	cin >> eleccion;
@@ -70,56 +85,76 @@ int main() {
 	cout << "Bienvenido " << playerUno.getApodo() << "\n";
 	cargador.pausaSeiscientos();
 
-	while (Logicajuego == true)
+	while (juego == true)
 	{
 		cargador.apodoEnemigo(eleccion, reutilizable, enemyUnoIniciar, enemyDosIniciar);
 		enemyUno.setApodo(eleccion);
 		enemyDos.setApodo(eleccion);
 
 		///////////////////////////////////////////////////////////////////////////////////////////////// ELECCION BARCO JUGADOR
-		cargador.eleccionBarco(nomBar, nomAtk, playerUnoIniciar, catBoatPlayer);
-		playerUno.setNombreBarco(nomBar);
-		playerUno.setNombreAtk(nomAtk);
+		cargador.eleccionBarco(reutilizableDos, playerUnoIniciar, catBoatPlayer);
+		playerUno.setNombreBarco(reutilizableDos);
 
 		///////////////////////////////////////////////////////////////////////////////////////////////// ELECCION BARCO ENEMIGO
-		cargador.barcoEnemigo(nomBar, nomAtk, catBoatPlayer);
-		enemyUno.setNombreBarco(nomBar);
-		enemyUno.setNombreAtk(nomAtk);
-		cargador.barcoEnemigo(nomBar, nomAtk, catBoatPlayer);
-		enemyDos.setNombreBarco(nomBar);
-		enemyDos.setNombreAtk(nomAtk);
+		cargador.barcoEnemigo(reutilizableDos, catBoatPlayer);
+		enemyUno.setNombreBarco(reutilizableDos);
+		cargador.barcoEnemigo(reutilizableDos, catBoatPlayer);
+		enemyDos.setNombreBarco(reutilizableDos);
 
 		///////////////////////////////////////////////////////////////////////////////////////////////// INICIO PARTIDA
 		cargador.presentacionCarrera(eleccion, reutilizable);
 		cout << eleccion << reutilizable;
 		if (playerUnoIniciar == true and enemyUnoIniciar == true and enemyDosIniciar == false)
 		{
-			for (int turno = 0; turno <= 6; turno++)
+			playerUno.setTurno(turnoPlayer), enemyUno.setTurno(turnoEnemyUno), enemyDos.setTurno(turnoEnemyDos);
+
+			for (int turno = 0; turno <= maxRondas; turno++)
 			{
-				// presentacion de la carrera bla bla linea de meta bla bla nombres y que barcos bla bla y finaliza con un pam de un disparo
-				// crear funcion de dado.			
-				// crear funcion para calcular.		-- puntos = 0; puntos += dado;
-				// mostrar dado, puntos, calcular turno
-				// funcion para printar turno		-- string anuncioTurno = "----------------turno"+turno;
-				// funcion printar	printar puntos usando un bucle for ejemplo por cada punto sumar un espacio y cabar con apodo
-				// crear logica de los atakes en base al nombre del atake -- olvidarme de los nombres de los atakes y de la logica que queria hacer y 
-				//				usar nitro con mensajes personalizados en base a nombreBarco 
-				//	
+				turnoPlayer = playerUno.getTurno(), turnoEnemyUno = enemyUno.getTurno(), turnoEnemyDos = enemyDos.getTurno();
+				// lanzar 3 dados
+				cargador.dice(reciclable, reciclableUno, reciclableDos);
+				cout << playerUno.getApodo() << " tira el dado y le sale: " << reciclable;
+				cout << enemyUno.getApodo() << " tira el dado y le sale: " << reciclableUno;
+				cout << enemyDos.getApodo() << " tira el dado y le sale: " << reciclableDos;
+
+				// pregunta nitro
+				cargador.nitro(turnoPlayer, turnoEnemyUno, turnoEnemyDos, reciclable, reciclableUno, reciclableDos);
+
+				// calcular puntos
+				cargador.puntosPlayer(pntPlayer, reciclable);
+				cargador.puntosEnemyUno(pntEnemyUno, reciclableUno);
+				cargador.puntosEnemyDos(pntEnemyDos, reciclableDos);
+				// asignar puntos
+				playerUno.setPuntos(pntPlayer);
+				enemyUno.setPuntos(pntEnemyUno);
+				enemyDos.setPuntos(pntEnemyDos);
+				// print puntos
+
+
+				// asignar turno
+				playerUno.setTurno(turnoPlayer), enemyUno.setTurno(turnoEnemyUno), enemyDos.setTurno(turnoEnemyDos);
+				turnoPlayer++, turnoEnemyUno++, turnoEnemyDos++;
 			}
+
+			// printar ganador
+			// preguntar si quiere jugar otra partida
 		}
-
-			
-
-
-
-
-
-
-
-
-
 	}
 }
+
+//corregir nitro : faltan mensajes personalizados
+//get de los 3 apodos, pasarlos a la funcion, generar mensaje con eso.
+//falta printar la carrera
+//falta banner y nombre del jugador ganador
+//falta preguntar si quiere jugar otra partida
+
+
+
+
+
+
+
+
 
 //#include <iostream>
 //#include <chrono>   // Para std::chrono::milliseconds
@@ -146,14 +181,3 @@ int main() {
 //cout << "despeus enemy uno:" << endl << "Nombre del Barco: " << enemyUno.getNombreBarco() << endl << "Nombre del Ataque: " << enemyUno.getNombreAtk() << endl << "playerUnoIniciar: " << (playerUnoIniciar ? "true" : "false") << endl << "catBoatPlayer: " << catBoatPlayer << endl;
 //cout << "despeus player:" << endl << "Nombre del Barco: " << playerUno.getNombreBarco() << endl << "Nombre del Ataque: " << playerUno.getNombreAtk() << endl << "playerUnoIniciar: " << (playerUnoIniciar ? "true" : "false") << endl << "catBoatPlayer: " << catBoatPlayer << endl;
 //cout << "despeus enemy dos:" << endl << "Nombre del Barco: " << enemyDos.getNombreBarco() << endl << "Nombre del Ataque: " << enemyDos.getNombreAtk() << endl << "playerUnoIniciar: " << (playerUnoIniciar ? "true" : "false") << endl << "catBoatPlayer: " << catBoatPlayer << endl;
-
-////							nombre vel. atk. vida. nombre atk
-//Barcos barcoSmall1 = Barcos("Kayuco", 5, false, 1, "atkKayuco");
-//Barcos barcoSmall2 = Barcos("Balsa", 5, false, 1, "atkBalsa");
-//Barcos barcoSmall3 = Barcos("Gondola", 5, false, 1, "atkGondola");
-//Barcos barcoMedium1 = Barcos("Narcolancha", 8, false, 1, "atkNarcolancha");
-//Barcos barcoMedium2 = Barcos("Galera", 8, false, 1, "atkGalera");
-//Barcos barcoMedium3 = Barcos("Drakkar", 8, false, 1, "atkDrakkar");
-//Barcos barcoBig1 = Barcos("Buque mercante", 10, false, 1, "atkBuqueMercante");
-//Barcos barcoBig2 = Barcos("Cruzero de lujo", 10, false, 1, "atkCruzeroDeLujo");
-//Barcos barcoBig3 = Barcos("Buque de investigacion", 10, false, 1, "atkBuqueDeInvestigacion");

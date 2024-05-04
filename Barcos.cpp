@@ -62,6 +62,23 @@ string Barcos::getDescripcionAtk() {
 	return descripcionAtk;
 }
 
+int Barcos::getTurno() {
+	return turno;
+}
+
+int Barcos::getpuntos() {
+	return puntos;
+}
+
+void Barcos::setpuntos(int& pPuntos) {
+	puntos = pPuntos;
+}
+
+
+void Barcos::setTurno(int pTurno) {
+	turno = pTurno;
+}
+
 void Barcos::setApodo(string pApodo) {
 	apodo = pApodo;
 }
@@ -102,7 +119,7 @@ void Barcos::intro() {
 	cout << "\\___ / \\___/|_____\\____|\\___/  |____/|_____| |____/_/   \\_\\_|_\\ \\_\\ ____\\___/|____ /" + salto() + salto() + salto();
 }
 
-void Barcos::eleccionBarco(string& pNombreBarco, string& pNombreAtk, bool& pPlayerUnoIniciar, int& pBoatPlayer) {
+void Barcos::eleccionBarco(string& pNombreBarco, bool& pPlayerUnoIniciar, int& pBoatPlayer) {
 	string eleccion;
 
 	bool cat = true;
@@ -131,14 +148,14 @@ void Barcos::eleccionBarco(string& pNombreBarco, string& pNombreAtk, bool& pPlay
 						if (eleccion == "s" || eleccion == "S" || eleccion == "si" || eleccion == "SI") {
 
 							pNombreBarco = "Kayuco";
-							pNombreAtk = "atkKayuco";
+							//pNombreAtk = "atkKayuco";
 							pPlayerUnoIniciar = true;
 							pBoatPlayer = 1;
 
 							cat = false;
 							tipBarco = false;
 							escbarco = false;
-							
+
 						}
 						else if (eleccion == "n" || eleccion == "N" || eleccion == "no" || eleccion == "NO") {
 							tipBarco = false;
@@ -161,7 +178,7 @@ void Barcos::eleccionBarco(string& pNombreBarco, string& pNombreAtk, bool& pPlay
 						if (eleccion == "s" || eleccion == "S" || eleccion == "si" || eleccion == "SI") {
 
 							pNombreBarco = "Balsa";
-							pNombreAtk = "atkBalsa";
+							//pNombreAtk = "atkBalsa";
 							pPlayerUnoIniciar = true;
 							pBoatPlayer = 1;
 
@@ -191,7 +208,7 @@ void Barcos::eleccionBarco(string& pNombreBarco, string& pNombreAtk, bool& pPlay
 						if (eleccion == "s" || eleccion == "S" || eleccion == "si" || eleccion == "SI") {
 
 							pNombreBarco = "Gondola";
-							pNombreAtk = "atkGondola";
+							//pNombreAtk = "atkGondola";
 							pPlayerUnoIniciar = true;
 							pBoatPlayer = 1;
 
@@ -239,7 +256,7 @@ void Barcos::eleccionBarco(string& pNombreBarco, string& pNombreAtk, bool& pPlay
 						if (eleccion == "s" || eleccion == "S" || eleccion == "si" || eleccion == "SI") {
 
 							pNombreBarco = "Narcolancha";
-							pNombreAtk = "atkNarcolancha";
+							//pNombreAtk = "atkNarcolancha";
 							pPlayerUnoIniciar = true;
 							pBoatPlayer = 2;
 
@@ -269,7 +286,7 @@ void Barcos::eleccionBarco(string& pNombreBarco, string& pNombreAtk, bool& pPlay
 						if (eleccion == "s" || eleccion == "S" || eleccion == "si" || eleccion == "SI") {
 
 							pNombreBarco = "Galera";
-							pNombreAtk = "atkGalera";
+							//pNombreAtk = "atkGalera";
 							pPlayerUnoIniciar = true;
 							pBoatPlayer = 2;
 
@@ -299,7 +316,7 @@ void Barcos::eleccionBarco(string& pNombreBarco, string& pNombreAtk, bool& pPlay
 						if (eleccion == "s" || eleccion == "S" || eleccion == "si" || eleccion == "SI") {
 
 							pNombreBarco = "Drakkar";
-							pNombreAtk = "atkDrakkar";
+							//pNombreAtk = "atkDrakkar";
 							pPlayerUnoIniciar = true;
 							pBoatPlayer = 2;
 
@@ -346,7 +363,7 @@ void Barcos::eleccionBarco(string& pNombreBarco, string& pNombreAtk, bool& pPlay
 						if (eleccion == "s" || eleccion == "S" || eleccion == "si" || eleccion == "SI") {
 
 							pNombreBarco = "Buque mercante";
-							pNombreAtk = "atkBuqueMercante";
+							//pNombreAtk = "atkBuqueMercante";
 							pPlayerUnoIniciar = true;
 							pBoatPlayer = 3;
 
@@ -374,7 +391,7 @@ void Barcos::eleccionBarco(string& pNombreBarco, string& pNombreAtk, bool& pPlay
 
 						if (eleccion == "s" || eleccion == "S" || eleccion == "si" || eleccion == "SI") {
 							pNombreBarco = "Crucero Swinger De Lujo";
-							pNombreAtk = "atkCruceroSwingerDeLujo";
+							//pNombreAtk = "atkCruceroSwingerDeLujo";
 							pPlayerUnoIniciar = true;
 							pBoatPlayer = 3;
 
@@ -402,7 +419,7 @@ void Barcos::eleccionBarco(string& pNombreBarco, string& pNombreAtk, bool& pPlay
 
 						if (eleccion == "s" || eleccion == "S" || eleccion == "si" || eleccion == "SI") {
 							pNombreBarco = "Buque De Investigacion";
-							pNombreAtk = "atkBuqueDeInvestigacion";
+							//pNombreAtk = "atkBuqueDeInvestigacion";
 							pPlayerUnoIniciar = true;
 							pBoatPlayer = 3;
 
@@ -436,7 +453,7 @@ void Barcos::eleccionBarco(string& pNombreBarco, string& pNombreAtk, bool& pPlay
 	}
 }
 
-void Barcos::barcoEnemigo(string& pNombreBarco, string& pNombreAtk, int pBoatPlayer) {
+void Barcos::barcoEnemigo(string& pNombreBarco, int pBoatPlayer) {
 
 	int random = rand() % 3 + 1;
 
@@ -446,51 +463,51 @@ void Barcos::barcoEnemigo(string& pNombreBarco, string& pNombreAtk, int pBoatPla
 		if (random == 1)
 		{
 			pNombreBarco = "Kayuco";
-			pNombreAtk = "atkKayuco";
+			//pNombreAtk = "atkKayuco";
 		}
 		else if (random == 2)
 		{
 			pNombreBarco = "Balsa";
-			pNombreAtk = "atkBalsa";
+			//pNombreAtk = "atkBalsa";
 		}
 		else if (random == 3)
 		{
 			pNombreBarco = "Gondola";
-			pNombreAtk = "atkGondola";
+			//pNombreAtk = "atkGondola";
 		}
 		break;
 	case 2:
 		if (random == 1)
 		{
 			pNombreBarco = "Narcolancha";
-			pNombreAtk = "Narcolancha";
+			//pNombreAtk = "Narcolancha";
 		}
 		else if (random == 2)
 		{
 			pNombreBarco = "Galera";
-			pNombreAtk = "Galera";
+			//pNombreAtk = "Galera";
 		}
 		else if (random == 3)
 		{
 			pNombreBarco = "Drakkar";
-			pNombreAtk = "Drakkar";
+			//pNombreAtk = "Drakkar";
 		}
 		break;
 	case 3:
 		if (random == 1)
 		{
 			pNombreBarco = "Buque Mercante";
-			pNombreAtk = "atk";
+			//pNombreAtk = "atk";
 		}
 		else if (random == 2)
 		{
 			pNombreBarco = "Crucero Swinger De Lujo";
-			pNombreAtk = "atkCruceroSwingerDeLujo";
+			//pNombreAtk = "atkCruceroSwingerDeLujo";
 		}
 		else if (random == 3)
 		{
 			pNombreBarco = "Buque De Investigacion";
-			pNombreAtk = "atkBuqueDeInvestigacion";
+			//pNombreAtk = "atkBuqueDeInvestigacion";
 		}
 		break;
 	}
@@ -503,7 +520,7 @@ void Barcos::apodoEnemigo(string& pApodoEnemyUno, string& pApodoEnemyDos, bool& 
 	{
 		int randomUno = rand() % 9;
 		int randomDos = rand() % 9;
-		string nombres[] = {"Muhammad","John","Maria","Wang","Li","Mohamed","Sofía","Juan","Yusuf","Chen"};
+		string nombres[] = { "Muhammad","John","Maria","Wang","Li","Mohamed","Sofía","Juan","Yusuf","Chen" };
 		pApodoEnemyUno = nombres[randomUno];
 		pApodoEnemyDos = nombres[randomDos];
 		if (pApodoEnemyUno != pApodoEnemyDos)
@@ -516,11 +533,122 @@ void Barcos::apodoEnemigo(string& pApodoEnemyUno, string& pApodoEnemyDos, bool& 
 }
 
 void Barcos::presentacionCarrera(string& pText, string& pDisparo) {
- 
-	pText = tab() + tab() + "Bienvenidos a la carrera mas emocionante del anyo. Preparense para la adrenalina,la velocidad y la competencia en su maxima expresion." + salto() + tab() + tab() + tab() +"Que gane el mejor! 3...2...1..." + salto();
+
+	pText = tab() + tab() + "Bienvenidos a la carrera mas emocionante del anyo. Preparense para la adrenalina,la velocidad y la competencia en su maxima expresion." + salto() + tab() + tab() + tab() + "Que gane el mejor! 3...2...1..." + salto();
 	pDisparo = tab() + tab() + tab() + tab() + " ____  _   _ __  __ __  __ __  __ _ _ _ " + salto() +
-			   tab() + tab() + tab() + tab() + "|  _ \\| | | |  \\/  |  \\/  |  \\/  | | | |" + salto() +
-		       tab() + tab() + tab() + tab() + "| |_) | | | | |\\/| | |\\/| | |\\/| | | | |" + salto() +
-		       tab() + tab() + tab() + tab() + "|  __/| |_| | |  | | |  | | |  | |_|_|_|" + salto() +
-		       tab() + tab() + tab() + tab() + "|_|    \\___/|_|  |_|_|  |_|_|  |_(_|_|_)" + salto();
+		tab() + tab() + tab() + tab() + "|  _ \\| | | |  \\/  |  \\/  |  \\/  | | | |" + salto() +
+		tab() + tab() + tab() + tab() + "| |_) | | | | |\\/| | |\\/| | |\\/| | | | |" + salto() +
+		tab() + tab() + tab() + tab() + "|  __/| |_| | |  | | |  | | |  | |_|_|_|" + salto() +
+		tab() + tab() + tab() + tab() + "|_|    \\___/|_|  |_|_|  |_|_|  |_(_|_|_)" + salto();
+}
+
+void Barcos::dice(int& pDicePlayer, int& pDiceEnemyUno, int& pDiceEnemyDos) {
+
+	pDicePlayer = rand() % 6 + 1;
+	pDiceEnemyUno = rand() % 6 + 1;
+	pDiceEnemyDos = rand() % 6 + 1;
+}
+
+void Barcos::puntosPlayer(int& pPuntosPlayer, int pDice) {
+	pPuntosPlayer = pPuntosPlayer + pDice;
+}
+
+void Barcos::puntosEnemyUno(int& pPuntosEUno, int pDice) {
+	pPuntosEUno = pPuntosEUno + pDice;
+}
+
+void Barcos::puntosEnemyDos(int& pPuntosEDos, int pDice) {
+	pPuntosEDos = pPuntosEDos + pDice;
+}
+
+void Barcos::nitro(int& turnoPlayer, int& turnoEnemyUno, int& turnoEnemyDos, int& pDicePlayer, int& pDiceEnemyUno, int& pDiceEnemyDos) {
+
+	string eleccion = "";
+	int fracaso = 0;
+
+	if (turnoPlayer >= 2)
+	{
+		bool usarNitro = true;
+		while (usarNitro == true)
+		{
+			cout << "Quieres usar un chute de nitro?(corres el riesgo de perder el valor generado en el dado)";
+			cin >> eleccion;
+			if (eleccion == "s" || eleccion == "S" || eleccion == "si" || eleccion == "SI") {
+
+				fracaso = rand() % 3;
+
+				if (fracaso == 0)
+				{
+					pDicePlayer = 0;
+				}
+				else
+				{
+					pDicePlayer += pDicePlayer;
+				}
+				turnoPlayer = 0;
+			}
+			else if (eleccion == "n" || eleccion == "N" || eleccion == "no" || eleccion == "NO") {
+				usarNitro = false;
+				break;
+			}
+			else if (!(eleccion == "s" || eleccion == "S" || eleccion == "si" || eleccion == "SI" ||
+				eleccion == "n" || eleccion == "N" || eleccion == "no" || eleccion == "NO")) {
+				cout << "\nEleccion incorrecta";
+			}
+		}
+	}
+	if (turnoEnemyUno >= 2)
+	{
+		bool usarNitro = true;
+		while (usarNitro == true)
+		{
+			fracaso = rand() % 1;
+			if (fracaso == 1) {
+
+				fracaso = rand() % 3;
+
+				if (fracaso == 0)
+				{
+					pDiceEnemyUno = 0;
+				}
+				else
+				{
+					pDiceEnemyUno += pDiceEnemyUno;
+				}
+				turnoEnemyUno = 0;
+			}
+			else if (fracaso == 0) {
+				usarNitro = false;
+				break;
+			}
+		}
+	}
+
+	if (turnoEnemyDos >= 2)
+	{
+		bool usarNitro = true;
+		while (usarNitro == true)
+		{
+			fracaso = rand() % 1;
+			if (fracaso == 1) {
+
+				fracaso = rand() % 3;
+
+				if (fracaso == 0)
+				{
+					pDiceEnemyDos = 0;
+				}
+				else
+				{
+					pDiceEnemyDos += pDiceEnemyDos;
+				}
+				turnoEnemyDos = 0;
+			}
+			else if (fracaso == 0) {
+				usarNitro = false;
+				break;
+			}
+		}
+
+	}
 }

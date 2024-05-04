@@ -15,7 +15,8 @@ private:
 	bool atk;					// boolean para activar o no el atk (cada 2 turnos)
 	string nombreAtk;			// nombre del atk
 	string descripcionAtk;		// descripcion de la que consiste el atk cuando vas por delante de alguien
-
+	int turno;
+	
 public:
 
 	Barcos();
@@ -28,6 +29,8 @@ public:
 	int getVidas();
 	string getNombreAtk();
 	string getDescripcionAtk();
+	int getTurno();
+	int getpuntos();
 
 	void setApodo(string pApodo);
 	void setPuntos(int pPuntos);
@@ -37,12 +40,19 @@ public:
 	void setVidas(int pVidas);
 	void setNombreAtk(string pNombreAtk);
 	void setDescripcionAtk(string pDescripcionAtk);
+	void setTurno(int pTurno);
+	void setpuntos(int& pPuntos);
 
+	void puntosPlayer(int& pPuntosPlayer, int pDice);
+	void puntosEnemyUno(int& pPuntosEUno, int pDice);
+	void puntosEnemyDos(int& pPuntosEDos, int pDice);
 	void intro();
-	void eleccionBarco(string& pNombreBarco, string& pNombreAtk, bool& pPlayerUnoIniciar, int& pBoatPlayer);
-	void barcoEnemigo(string& pNombreBarco, string& pNombreAtk,int pBoatPlayer);
+	void eleccionBarco(string& pNombreBarco, bool& pPlayerUnoIniciar, int& pBoatPlayer);
+	void barcoEnemigo(string& pNombreBarco, int pBoatPlayer);
 	void apodoEnemigo(string& pApodoEnemyUno, string& pApodoEnemyDos, bool& penemyUnoIniciar, bool& penemyDosIniciar);
 	void presentacionCarrera(string& pText, string& pDisparo);
+	void dice(int& pDicePlayer, int& pDiceEnemyUno, int& pDiceEnemyDos);
+	void nitro(int& turnoPlayer, int& turnoEnemyUno, int& turnoEnemyDos, int& pDicePlayer, int& pDiceEnemyUno, int& pDiceEnemyDos);
 
 
 
@@ -51,4 +61,6 @@ public:
 	void pausaMil();
 	string tab();
 	string salto();
+
+
 };
