@@ -52,15 +52,12 @@ public:
 	void apodoEnemigo(string& pApodoEnemyUno, string& pApodoEnemyDos, bool& penemyUnoIniciar, bool& penemyDosIniciar);
 	void presentacionCarrera(string& pText, string& pDisparo);
 	void dice(int& pDicePlayer, int& pDiceEnemyUno, int& pDiceEnemyDos);
-	void nitro(int& turnoPlayer, int& turnoEnemyUno, int& turnoEnemyDos, int& pDicePlayer, int& pDiceEnemyUno, int& pDiceEnemyDos);
-
-
-
+	void nitro(int& turnoPlayer, int& turnoEnemyUno, int& turnoEnemyDos, int& pDicePlayer, int& pDiceEnemyUno, int& pDiceEnemyDos, string pText, string pTextUno, string pTextDos);
+	void printCarrera(int pPuntosPlayer, int pPuntosEnemyUno, int pPuntosEnemyDos, string pText, string pTextUno, string pTextDos);
 
 	void pausaSeiscientos();
 	void pausaMil();
 	string tab();
 	string salto();
-
 
 };

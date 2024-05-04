@@ -73,7 +73,7 @@ int main() {
 
 	Barcos cargador;			// variable para cargar funciones
 	Barcos playerUno, enemyUno, enemyDos;
-	string eleccion = "", reutilizable = "", reutilizableDos = "";
+	string eleccion = "", reutilizable = "", reutilizableDos = "", reutilizableTres = "";
 	bool playerUnoIniciar = false, enemyUnoIniciar = false, enemyDosIniciar = false, juego = true;
 	int catBoatPlayer = 0, reciclable = 0, reciclableUno = 0, reciclableDos = 0, turnoPlayer = 0, turnoEnemyUno = 0, turnoEnemyDos = 0, pntPlayer = 0, pntEnemyUno = 0, pntEnemyDos = 0;	// cambiar turnos y puntos por arrays
 
@@ -107,10 +107,14 @@ int main() {
 		if (playerUnoIniciar == true and enemyUnoIniciar == true and enemyDosIniciar == false)
 		{
 			playerUno.setTurno(turnoPlayer), enemyUno.setTurno(turnoEnemyUno), enemyDos.setTurno(turnoEnemyDos);
+			reutilizable = playerUno.getApodo(), reutilizableDos = enemyUno.getApodo(), reutilizableTres = enemyDos.getApodo();
 
 			for (int turno = 0; turno <= maxRondas; turno++)
-			{
+			{	
+				// reiniciamos valor que seran editados en las siguientes lineas
+
 				turnoPlayer = playerUno.getTurno(), turnoEnemyUno = enemyUno.getTurno(), turnoEnemyDos = enemyDos.getTurno();
+
 				// lanzar 3 dados
 				cargador.dice(reciclable, reciclableUno, reciclableDos);
 				cout << playerUno.getApodo() << " tira el dado y le sale: " << reciclable;
@@ -118,17 +122,19 @@ int main() {
 				cout << enemyDos.getApodo() << " tira el dado y le sale: " << reciclableDos;
 
 				// pregunta nitro
-				cargador.nitro(turnoPlayer, turnoEnemyUno, turnoEnemyDos, reciclable, reciclableUno, reciclableDos);
+				cargador.nitro(turnoPlayer, turnoEnemyUno, turnoEnemyDos, reciclable, reciclableUno, reciclableDos, reutilizable, reutilizableDos, reutilizableTres);
 
 				// calcular puntos
 				cargador.puntosPlayer(pntPlayer, reciclable);
 				cargador.puntosEnemyUno(pntEnemyUno, reciclableUno);
 				cargador.puntosEnemyDos(pntEnemyDos, reciclableDos);
+
 				// asignar puntos
 				playerUno.setPuntos(pntPlayer);
 				enemyUno.setPuntos(pntEnemyUno);
 				enemyDos.setPuntos(pntEnemyDos);
 				// print puntos
+				cargador.printCarrera(playerUno.getPuntos(), enemyUno.getPuntos(), enemyDos.getPuntos(), reutilizable, reutilizableDos, reutilizableTres);
 
 
 				// asignar turno
@@ -142,15 +148,9 @@ int main() {
 	}
 }
 
-//corregir nitro : faltan mensajes personalizados
-//get de los 3 apodos, pasarlos a la funcion, generar mensaje con eso.
 //falta printar la carrera
 //falta banner y nombre del jugador ganador
 //falta preguntar si quiere jugar otra partida
-
-
-
-
 
 
 

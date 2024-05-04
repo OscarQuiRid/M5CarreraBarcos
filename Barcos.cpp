@@ -74,7 +74,6 @@ void Barcos::setpuntos(int& pPuntos) {
 	puntos = pPuntos;
 }
 
-
 void Barcos::setTurno(int pTurno) {
 	turno = pTurno;
 }
@@ -561,7 +560,7 @@ void Barcos::puntosEnemyDos(int& pPuntosEDos, int pDice) {
 	pPuntosEDos = pPuntosEDos + pDice;
 }
 
-void Barcos::nitro(int& turnoPlayer, int& turnoEnemyUno, int& turnoEnemyDos, int& pDicePlayer, int& pDiceEnemyUno, int& pDiceEnemyDos) {
+void Barcos::nitro(int& turnoPlayer, int& turnoEnemyUno, int& turnoEnemyDos, int& pDicePlayer, int& pDiceEnemyUno, int& pDiceEnemyDos, string pText, string pTextUno, string pTextDos) {
 
 	string eleccion = "";
 	int fracaso = 0;
@@ -580,10 +579,12 @@ void Barcos::nitro(int& turnoPlayer, int& turnoEnemyUno, int& turnoEnemyDos, int
 				if (fracaso == 0)
 				{
 					pDicePlayer = 0;
+					cout << pText << " Nitro no te a funcionado! Pierdes el valor del dado!!!";
 				}
 				else
 				{
 					pDicePlayer += pDicePlayer;
+					cout << pText << " Bienn!! has multiplicado el resultado del dado x2";
 				}
 				turnoPlayer = 0;
 			}
@@ -610,10 +611,12 @@ void Barcos::nitro(int& turnoPlayer, int& turnoEnemyUno, int& turnoEnemyDos, int
 				if (fracaso == 0)
 				{
 					pDiceEnemyUno = 0;
+					cout << "Nitro de " << pTextUno << " no a funcionado! Pierde el valor del dado!!!";
 				}
 				else
 				{
 					pDiceEnemyUno += pDiceEnemyUno;
+					cout << pTextUno << " Uso nitro!! ha multiplicado el resultado del dado x2";
 				}
 				turnoEnemyUno = 0;
 			}
@@ -623,7 +626,6 @@ void Barcos::nitro(int& turnoPlayer, int& turnoEnemyUno, int& turnoEnemyDos, int
 			}
 		}
 	}
-
 	if (turnoEnemyDos >= 2)
 	{
 		bool usarNitro = true;
@@ -637,10 +639,12 @@ void Barcos::nitro(int& turnoPlayer, int& turnoEnemyUno, int& turnoEnemyDos, int
 				if (fracaso == 0)
 				{
 					pDiceEnemyDos = 0;
+					cout << "Nitro de " << pTextDos << " no a funcionado! Pierde el valor del dado!!!";
 				}
 				else
 				{
 					pDiceEnemyDos += pDiceEnemyDos;
+					cout << pTextDos << " Uso nitro!! ha multiplicado el resultado del dado x2";
 				}
 				turnoEnemyDos = 0;
 			}
@@ -651,4 +655,64 @@ void Barcos::nitro(int& turnoPlayer, int& turnoEnemyUno, int& turnoEnemyDos, int
 		}
 
 	}
+}
+
+void Barcos::printCarrera(int pPuntosPlayer, int pPuntosEnemyUno, int pPuntosEnemyDos, string pText, string pTextUno, string pTextDos) {
+
+	string player[72];
+	string enemyUno[72];
+	string enemyDos[72];
+	string espacio = " ";
+	string print = "";
+
+	for (size_t i = 0; i <= pPuntosPlayer; i++)
+	{
+		if (i == pPuntosPlayer)
+		{
+			player[i] = espacio + pText;
+		}
+		else
+		{
+			player[i] = "~";
+		}
+	}
+	for (size_t i = 0; i <= pPuntosEnemyUno; i++)
+	{
+		if (i == pPuntosEnemyUno)
+		{
+			enemyUno[i] = espacio + pTextUno;
+		}
+		else
+		{
+			enemyUno[i] = "~";
+		}
+	}
+	for (size_t i = 0; i <= pPuntosEnemyDos; i++)
+	{
+		if (i == pPuntosEnemyDos)
+		{
+			enemyDos[i] = espacio + pTextDos;
+		}
+		else
+		{
+			enemyDos[i] = "~";
+		}
+	}
+	for (int i = 0; i < player->length() && !player[i].empty(); ++i) {
+		
+		print = print + player[i];
+	}
+	cout << print;
+	print = "";
+	for (int i = 0; i < enemyUno->length() && !enemyUno[i].empty(); ++i) {
+
+		print = print + enemyUno[i];
+	}
+	cout << print;
+	print = "";
+	for (int i = 0; i < enemyDos->length() && !enemyDos[i].empty(); ++i) {
+
+		print = print + enemyDos[i];
+	}
+	cout << print;
 }
